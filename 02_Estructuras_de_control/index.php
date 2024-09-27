@@ -32,6 +32,23 @@
                     Ejercicios de comparaciones con date()
                 </td>
             </tr>
+            </tr>
+            <tr>
+                <td>
+                    <a href="ejercicios.php">ejercicios.php</a>
+                </td>
+                <td>
+                    Ejercicios para realizar
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="bucles.php">bucles.php</a>
+                </td>
+                <td>
+                    Ejercicios de bucles
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>
