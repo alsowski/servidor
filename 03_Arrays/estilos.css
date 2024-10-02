@@ -1,0 +1,25 @@
+table {
+    border: 2px solid  rgb(33, 33, 216);
+    /*border-collapse: collapse;*/
+}
+
+th, td {
+    border: 2px solid rgb(238, 203, 6);
+}
+
+caption {
+    color: rgb(233, 10, 10);
+    border: 2px solid rgb(33, 33, 216);
+}
+
+.suspenso {
+    background-color: red;
+}
+
+.aprobado {
+    background-color: greenyellow;
+}
+
+.suficiente {
+    background-color: gold;
+}
