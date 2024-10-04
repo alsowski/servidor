@@ -46,6 +46,7 @@
         </thead>
         <tbody>
             <?php
+            ksort($instituto);
             foreach($instituto as $asignatura => $profesor) {
                 echo "<tr>";
                 echo "<td>$asignatura</td>";
@@ -66,7 +67,9 @@
             Daniel => 5
             Aurora => 10
             Luis => 7
+            Ismael => 0
             Sanuel => 9
+            Vicente => 1
 
             MOSTRAR EN UNA TABLA CON 3 COLUMNAS
             - COLUMNA 1: ALUMNO
@@ -80,7 +83,9 @@
     "Daniel" => "5",
     "Aurora" => "10",
     "Luis" => "7",
+    "Ismael" => "0",
     "Samuel" => "9",
+    "Vicente" => "1"
     ];
     ?>
 
@@ -111,5 +116,16 @@
             ?>
         </tbody>
     </table>
+    <?php
+    /**
+     * Insertar dos nuevos estudiante, con notas aleatorias entre 0 y 10
+     * 
+     * Borrar un estudiante (el que peor os caiga) por la clave
+     * 
+     * Mostrar en una nueva tabla todo ordenado por los nombres en orden alfabéticamente inverso
+     * 
+     * Mostrar en una tabla todo ordenado por notas de 10 a 0 (orden inverso)
+     */
+    ?>
 </body>
 </html>
