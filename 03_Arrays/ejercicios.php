@@ -116,6 +116,7 @@
             ?>
         </tbody>
     </table>
+    <br>
     <?php
     /**
      * Insertar dos nuevos estudiante, con notas aleatorias entre 0 y 10
@@ -126,6 +127,42 @@
      * 
      * Mostrar en una tabla todo ordenado por notas de 10 a 0 (orden inverso)
      */
+
+    $estudiantes["Paula"] = rand(0,10);
+    $estudiantes["Waluis"] = rand(0,10);
+
+    unset($estudiantes["Vicente"]);
+
+    krsort($estudiantes);
     ?>
+
+    <table>
+        <caption>Estudiantes ordenados por el nombre al revés</caption>
+        <thead>
+            <tr>
+                <th>Estudiantes</th>
+                <th>Nota</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            arsort($estudiantes);
+            foreach($estudiantes as $estudiante => $nota) {
+                echo "<tr>";
+                echo "<td>$alumno</td>";
+                echo "<td>$nota</td>";
+                    if($nota < 5) echo '<td class="suspenso">Suspenso</td>';
+                    else {
+                    if ($nota == 5) echo '<td class="suficiente">Suficiente</td>';
+                    if ($nota == 6) echo '<td class="aprobado">Bien</td>';
+                    if ($nota > 6 && $nota < 9) echo '<td class="aprobado">Notable</td>';
+                    if ($nota > 8) echo '<td class="aprobado">Sobresaliente</td>';
+                    }
+                }
+                echo "</tr>";
+            ?>
+        </tbody>
+    </table>
 </body>
 </html>
