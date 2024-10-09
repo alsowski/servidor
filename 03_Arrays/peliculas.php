@@ -34,6 +34,20 @@
      *      2. AÑO
      *      3. TÍTULO (TODO ALFABÉTICAMENTE, Y EL AÑO DE MÁS RECIENTE A MÁS ANTIGUO)
      */
+
+     for($i = 0; $i < count($peliculas); $i++){
+        $peliculas[$i][3] = rand (30, 240);
+    
+        if($peliculas[$i][3] < 60) $peliculas[$i][4] = "CORTOMETRAJE";
+        else $peliculas[$i][4] = "LARGOMETRAJE";
+    }
+
+    $_titulo = array_column($peliculas, 0);
+    $_genero = array_column($peliculas, 1);
+    $_anio = array_column($peliculas, 2);
+
+    array_multisort($_genero, SORT_ASC, $_anio, SORT_DESC, $_titulo, SORT_ASC, $peliculas);
+
     ?>
 
     <table>
@@ -42,22 +56,32 @@
                 <th>Película</th>
                 <th>Género</th>
                 <th>Año Lanzamiento</th>
+                <th>Duración</th>
+                <th>Tipo</th>
             </tr>
         </thead>
         <tbody>
         <?php
             foreach($peliculas as $peliculas) {
                 //echo $videojuego[0];  también podemos sacar así las columnas
-                list($pelicula, $genero, $anio) = $peliculas;
+                list($pelicula, $genero, $anio, $duracion, $tipo) = $peliculas;
                 echo "<tr>";
                 echo "<td>$pelicula</td>";
                 echo "<td>$genero</td>";
                 echo "<td>$anio</td>";
+                echo "<td>$duracion</td>";
+                echo "<td>$tipo</td>";
                 echo "</tr>";
+                /*<td> */
+                /*<td><?php echo $titulo ?></td>*/
+                /*<td><?php echo $titulo ?></td>*/
+                /*<td><?php echo $genero ?></td>*/
+                 /*<td><?php echo $anio ?></td>*/
+                 /*<td><?php echo $duracion ?></td>*/
+                 /*</td> */
             }
             ?>
         </tbody>
-</body>
-</html>
+    </table>
 </body>
 </html>
