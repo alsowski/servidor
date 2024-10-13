@@ -11,3 +11,15 @@ caption {
     color: rgb(233, 10, 10);
     border: 2px solid rgb(33, 33, 216);
 }
+
+.suspenso {
+    background-color: red;
+}
+
+.aprobado {
+    background-color: greenyellow;
+}
+
+.suficiente {
+    background-color: gold;
+}

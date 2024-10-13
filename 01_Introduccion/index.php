@@ -32,6 +32,6 @@
     
     <?php $texto = "hola mundo"; ?>
 
-    <h1> <?php echo $texto ?><7h1>
+    <h1> <?php echo $texto ?></h1>
 </body>
 </html>

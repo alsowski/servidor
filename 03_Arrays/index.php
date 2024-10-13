@@ -18,35 +18,34 @@
         <tbody>
             <tr>
                 <td>
-                    <a href="numeros.php">numeros.php</a>
+                    <a href="ejemplos.php">ejemplos.php</a>
                 </td>
                 <td>
-                    Ejercicios de comparaciones con números
+                    Ejemplos de ejercicios con arrays
                 </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="fechas.php">fechas.php</a>
-                </td>
-                <td>
-                    Ejercicios de comparaciones con date()
-                </td>
-            </tr>
             </tr>
             <tr>
                 <td>
                     <a href="ejercicios.php">ejercicios.php</a>
                 </td>
                 <td>
-                    Ejercicios para realizar
+                    Ejercicios con arrays
                 </td>
             </tr>
             <tr>
                 <td>
-                    <a href="bucles.php">bucles.php</a>
+                    <a href="arrays_bidimensionales.php">arrays_bidimensionales.php</a>
                 </td>
                 <td>
-                    Ejercicios de bucles
+                    Ejercicios con arrays bidimensionales
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="peliculas.php">peliculas.php</a>
+                </td>
+                <td>
+                    Ejercicios con arrays bidimensionales (películas)
                 </td>
             </tr>
         </tbody>

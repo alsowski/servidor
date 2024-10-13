@@ -18,35 +18,34 @@
         <tbody>
             <tr>
                 <td>
-                    <a href="numeros.php">numeros.php</a>
+                    <a href="ejemplos.php">ejemplos.php</a>
                 </td>
                 <td>
-                    Ejercicios de comparaciones con números
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="fechas.php">fechas.php</a>
-                </td>
-                <td>
-                    Ejercicios de comparaciones con date()
-                </td>
-            </tr>
-            </tr>
-            <tr>
-                <td>
-                    <a href="ejercicios.php">ejercicios.php</a>
-                </td>
-                <td>
-                    Ejercicios para realizar
+                    Ejemplos de ejercicios con formularios
                 </td>
             </tr>
             <tr>
                 <td>
-                    <a href="bucles.php">bucles.php</a>
+                    <a href="potencias.php">potencias.php</a>
                 </td>
                 <td>
-                    Ejercicios de bucles
+                    Ejemplos de ejercicios con potencias
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="edades.php">edades.php</a>
+                </td>
+                <td>
+                    Ejemplos de ejercicios con edades
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="multi.php">multi.php</a>
+                </td>
+                <td>
+                    Ejemplos de ejercicios con multiplicaciones
                 </td>
             </tr>
         </tbody>
