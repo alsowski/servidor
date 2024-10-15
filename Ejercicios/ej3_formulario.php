@@ -17,7 +17,7 @@
     <label for="num2">Número 2</label>
     <input type="number" name="num2">
     <br><br>
-    <input type="submit" value="Enviar">
+    <input type="submit" value="Calcular">
     <br><br><hr>
     </form>
 
@@ -30,17 +30,20 @@
 
         $res = "";
 
+        echo "<ul>";
         for($i = $num1; $i <= $num2; $i++){
-            for($j=2; $j<=$i; $j++){
-                if($i % $j == 0){break;}
+            $esPrimo = true;
+            for($j=2; $j<=$i/2; $j++){
+                if($i % $j == 0){
+                    $esPrimo = false;
+                    break;
+                }
             }
-            if($i==$j){
-                $res.=$i.",";
+            if($esPrimo){
+                echo "<li>$i</li>";
             }
         }
-
-        echo "<h1>Los números primos entre $num1 y $num2 son: $res</h1>";
-
+        echo "<ul>";
         }
     ?>
 

@@ -20,7 +20,7 @@
     <label for="numc">Número C</label>
     <input type="number" name="numc">
     <br><br>
-    <input type="submit" value="Enviar">
+    <input type="submit" value="Calcular">
     <br><br><hr>
     </form>
 
@@ -35,8 +35,8 @@
             $numa = $_POST["numa"];
             $numb = $_POST["numb"];
             $numc = $_POST["numc"];
-            $multiplos = $_POST["numc"];
 
+        $multiplos = $numc;
         $nums = $numb-$numa;
         $resultado = "";
 
