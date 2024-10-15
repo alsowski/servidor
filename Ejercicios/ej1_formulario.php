@@ -33,6 +33,14 @@
             $num2 = $_POST["num2"];
             $num3 = $_POST["num3"];
 
+            /*
+            $resultado = match(true) {
+                $edad < 18 => "es menor de edad",
+                $edad >= 18 and $edad <= 65 => "es mayor de edad",
+                $edad > 65 => "se ha jubilado"
+            }; 
+            */
+
             if ($num1>$num2 && $num1>$num3){
                 echo "<h2>El número 1 ($num1) es el mayor</h2>";
             } elseif ($num2>$num1 && $num2>$num3){
