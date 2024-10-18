@@ -18,42 +18,42 @@
         <tbody>
             <tr>
                 <td>
-                    <a href="ejemplos.php">ejemplos.php</a>
+                    <a href="ej1_formulario.php">ej1_formulario.php</a>
                 </td>
                 <td>
-                    Ejemplos de ejercicios con formularios
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="potencias.php">potencias.php</a>
-                </td>
-                <td>
-                    Ejemplos de ejercicios con potencias
+                    Ejemplo de ejericio con formulario
                 </td>
             </tr>
             <tr>
                 <td>
-                    <a href="edades.php">edades.php</a>
+                    <a href="ej2_formulario.php">ej2_formulario.php</a>
                 </td>
                 <td>
-                    Ejemplos de ejercicios con edades
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="multi.php">multi.php</a>
-                </td>
-                <td>
-                    Ejemplos de ejercicios con multiplicaciones
+                    Ejemplo de ejericio con formulario
                 </td>
             </tr>
             <tr>
                 <td>
-                    <a href="iva_get.php">iva_get.php</a>
+                    <a href="ej3_formulario.php">ej3_formulario.php</a>
                 </td>
                 <td>
-                    Ejemplo de ejercicio con iva
+                    Ejemplo de ejericio con formulario                
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="ej4_formulario.php">ej4_formulario.php</a>
+                </td>
+                <td>
+                    Ejemplo de ejercicio con formulario
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="ej_iva.php">ej_iva.php</a>
+                </td>
+                <td>
+                    Ejemplo de ejericio con iva
                 </td>
             </tr>
         </tbody>
