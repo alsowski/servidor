@@ -21,7 +21,7 @@
                     <a href="ej1_formulario.php">ej1_formulario.php</a>
                 </td>
                 <td>
-                    Ejemplo de ejericio con formulario
+                    Ejemplo de ejericio con ej1_formulario
                 </td>
             </tr>
             <tr>
@@ -29,7 +29,7 @@
                     <a href="ej2_formulario.php">ej2_formulario.php</a>
                 </td>
                 <td>
-                    Ejemplo de ejericio con formulario
+                    Ejemplo de ejericio con ej2_formulario
                 </td>
             </tr>
             <tr>
@@ -37,7 +37,7 @@
                     <a href="ej3_formulario.php">ej3_formulario.php</a>
                 </td>
                 <td>
-                    Ejemplo de ejericio con formulario                
+                    Ejemplo de ejericio con ej3_formulario
                 </td>
             </tr>
             <tr>
@@ -45,7 +45,7 @@
                     <a href="ej4_formulario.php">ej4_formulario.php</a>
                 </td>
                 <td>
-                    Ejemplo de ejercicio con formulario
+                    Ejemplo de ejericio con ej4_formulario
                 </td>
             </tr>
             <tr>
@@ -54,6 +54,14 @@
                 </td>
                 <td>
                     Ejemplo de ejericio con iva
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="varios_formularios.php">varios_formularios.php</a>
+                </td>
+                <td>
+                    Ejemplo de ejericio con varios formularios
                 </td>
             </tr>
         </tbody>
