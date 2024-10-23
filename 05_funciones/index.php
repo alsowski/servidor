@@ -32,6 +32,22 @@
                     Ejemplo de ejericio con edades
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="potencias.php">potencias.php</a>
+                </td>
+                <td>
+                    Ejemplo de ejericio con potencias
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="economia.php">economia.php</a>
+                </td>
+                <td>
+                    Ejemplo de ejericio con economia
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>

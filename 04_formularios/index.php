@@ -53,6 +53,22 @@
                     <a href="iva_get.php">iva_get.php</a>
                 </td>
                 <td>
+                    Ejemplo de ejercicio con iva (get)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="irpf.php">irpf.php</a>
+                </td>
+                <td>
+                    Ejemplo de ejercicio con irpf
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="iva.php">iva.php</a>
+                </td>
+                <td>
                     Ejemplo de ejercicio con iva
                 </td>
             </tr>

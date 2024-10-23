@@ -4,59 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Potencias</title>
-    <link rel="stylesheet" type="text/css" href="estilos.css">
     <?php
         error_reporting( E_ALL );
-        ini_set( "display_errors", 1 );    
+        ini_set("display_errors", 1 );    
+
+        require("../05_funciones/potencias.php");
     ?>
 </head>
 <body>
     <form action="" method="post">
-    <label for="base">Base</label>
-    <input type="number" name="base">
-    <br><br>
-    <label for="expo">Exponente</label>
-    <input type="number" name="expo">
-    <br><br>
-    <input type="submit" value="Enviar">
-    <br><br><hr>
+        <label for="base">Base</label>
+        <input type="text" name="base" id="base" placeholder="Introduzca la base"><br><br>
+        <label for="exponente">Exponente</label>
+        <input type="text" name="exponente" id="exponente" placeholder="Introduzca el exponente"><br><br>
+        <input type="submit" value="Calcular">
     </form>
 
     <?php
-    /**
-     * CREAR UN FORMULARIO QUE RECIBA DOS PARÁMETROS: BASE Y EXPONENTE
-     * 
-     * CUANDO SE ENVIÉ EL FORMULARIO, SE CALCULARÁ EL RESULTADO DE ELEVAR
-     * LA BASE AL EXPONENTE
-     * 
-     * EJEMPLOS:
-     * 
-     * 2 ELEVADO A 3 = 8 => 2x2x2 = 8
-     * 3 ELEVADO A 2 = 9 => 3x3 = 9
-     * 2 ELEVADO A 1 = 2
-     * 3 ELEVADO A 0 = 1
-     */
 
-     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $base = $_POST["base"];
-        $expo = $_POST["expo"];
-        $resultado = 1;
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $tmp_base = $_POST["base"];
+        $tmp_exponente = $_POST["exponente"];
 
-        //$potencia = $base**$expo;
-        //$potencia = pow($base, $expo);
-        //echo "<h2>$base elevado a $expo es $potencia</h2>";
-    
-        for($i = 0; $i < $expo; $i++){
-            $resultado = $resultado * $base;
-            /**
-             * 2 elevado a 3
-             * 
-             * resultado = 1x2 = 2
-             * resultado = 2x2 = 4
-             * resultado = 4x4 = 8
-             */
+        /*
+        if($tmp_base != '') {
+            if(filter_var($tmp_base, FILTER_VALIDATE_INT !== FALSE)) {
+                $base = $tmp_base;
+            } else {
+                echo "<p>La base debe ser un número</p>";
+            }
+        } else {
+            echo "<p>La base es obligatoria</p>";
         }
-        echo "<h1>El resultado de $base elevado a $expo es $resultado</h1>";
+        */
+
+        if ($tmp_base == '') {
+            echo "<p>La base es obligatoria</p>";
+        } else {
+            if(filter_var($tmp_base, FILTER_VALIDATE_INT) === FALSE) {
+                echo "<p>La base debe ser un número</p>";
+            } else {
+                $base = $tmp_base;
+            }
+        }
+
+        /*
+        if($tmp_exponente != '') {
+            if(filter_var($tmp_exponente, FILTER_VALIDATE_INT !== FALSE)) {
+                if($tmp_exponente >=0){
+                    $exponente = $temp_exponente;
+                } else {
+                    echo "<p>El exponente debe ser mayor que 0</p>";
+                }
+            } else {
+                echo "<p>El exponente debe ser un número</p>";
+            }
+        } else {
+            echo "<p>El exponente es obligatoria</p>";
+        }
+        */
+
+        if($tmp_exponente == ''){
+            echo "<p>El exponente es obligatoria</p>";
+        } else {
+            if (filter_var($tmp_exponente, FILTER_VALIDATE_INT === FALSE)) {
+                echo "<p>El exponente debe ser un número</p>"; 
+            } else {
+                if ($tmp_exponente < 0) {
+                    echo "<p>El exponente debe ser mayor que 0</p>";
+                } else {
+                    $exponente = $tmp_exponente;
+                }
+            }
+        }
+
+        if(isset($base) && isset($xponente)) {
+            $resultado = potencia($base, $exponente);
+            echo "<p>El resultado es $resultado</p>";
+        }
     }
     ?>
 </body>
