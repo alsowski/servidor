@@ -10,6 +10,12 @@
 
         require('../05_funciones/economia.php');
     ?>
+    <style>
+        .error{
+            color: red;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
     <form action="" method="post">

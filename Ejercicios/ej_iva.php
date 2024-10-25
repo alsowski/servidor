@@ -14,14 +14,6 @@
     ?>
 </head>
 <body>
-    <!--
-    GENERAL = 21%
-    REDUCIDO = 10%
-    SUPERREDUCIDO = 4%
-
-    10€ IVA = GENERAL, PVP = 12,1€ PVP = precio * 1.21
-    10€ iva = REDUCIDO, PVP = 11€  PVP = precio * 1.1
-    -->
     <form action="" method="post">
         <label for="precio">Precio</label>
         <input type="text" name="precio" id="precio">
