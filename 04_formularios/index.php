@@ -72,6 +72,14 @@
                     Ejemplo de ejercicio con iva
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="usuario.php">usuario.php</a>
+                </td>
+                <td>
+                    Ejemplo de ejercicio con bootstrap
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>
