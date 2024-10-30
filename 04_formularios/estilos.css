@@ -11,3 +11,7 @@ caption {
     color: rgb(233, 10, 10);
     border: 2px solid rgb(33, 33, 216);
 }
+
+.error {
+    color: red;
+}
