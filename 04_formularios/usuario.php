@@ -16,19 +16,23 @@
     </style>
 </head>
 <body>
+    <?php
+    function depurar($entrada) {
+        $salida = htmlspecialchars($entrada);
+        $salida = trim($salida);
+        $salida = preg_replace('!\s+!',' ', $salida);
+        return $salida;
+    }
+    ?>
     <div class="container">
-        <!-- Content here -->
-
         <?php
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $tmp_usuario = $_POST["usuario"];
-            $tmp_nombre = $_POST["nombre"];
-            $tmp_apellidos = $_POST["apellidos"];
-            $tmp_dni = $_POST["dni"];
-            $tmp_correo = $_POST["correo"];
-            $tmp_fecha_nacimiento = $_POST["fecha_nacimiento"];
-
-            
+            $tmp_usuario = depurar($_POST["usuario"]);
+            $tmp_nombre = depurar($_POST["nombre"]);
+            $tmp_apellidos = depurar($_POST["apellidos"]);
+            $tmp_dni = depurar($_POST["dni"]);
+            $tmp_correo = depurar($_POST["correo"]);
+            $tmp_fecha_nacimiento = depurar($_POST["fecha_nacimiento"]);
 
             if($tmp_dni == '') {
                 $err_dni = "El DNI es obligatorio";
@@ -115,7 +119,7 @@
                     $err_usuario = "El usuario debe contener de 4 a 12 letras, 
                         números o barrabaja";
                 } else {
-                    $usuario = $tmp_usuario;
+                    $usuario = ucwords(strtolower($tmp_usuario));
                 }
             }
 
@@ -131,24 +135,7 @@
                         $err_nombre = "El nombre solo puede contener letras y espacios
                             en blanco";
                     } else {
-                        $nombre = $tmp_nombre;
-                    }
-                }
-            }
-
-            if($tmp_apellidos == '') {
-                $err_apellidos = "El apellido es obligatorio";
-            } else {
-                if(strlen($tmp_apellidos) < 2 || strlen($tmp_apellidos) > 40) {
-                    $err_apellidos = "El apellido debe tener entre 2 y 40 caracteres";
-                } else {
-                    //  letras, espacios en blanco y tildes
-                    $patron = "/^[a-zA-Z áéióúÁÉÍÓÚñÑüÜ]+$/";
-                    if(!preg_match($patron, $tmp_apellidos)) {
-                        $err_apellidos = "El apellido solo puede contener letras y espacios
-                            en blanco";
-                    } else {
-                        $apellidos = $tmp_apellidos;
+                        $nombre = ucwords(strtolower($tmp_nombre));
                     }
                 }
             }
@@ -157,62 +144,44 @@
                 $err_fecha_nacimiento = "La fecha de nacimiento es obligatoria";
             } else {
                 $patron = "/^[0-9]{4}\-[0-9]{2}\-[0-9]{2}$/";
-                if(!preg_match($patron,$tmp_fecha_nacimiento)) {
-                    $err_fecha_nacimiento = "El formato de la fecha es incorrecto";
+                if(!preg_match($patron, $tmp_fecha_nacimiento)) {
+                    $err_fecha_nacimiento = "Formato de fecha incorrecto";
                 } else {
-                    $fecha_actual = date("Y-m-d");  //  2024 25 10
-                    list($anno_actual,$mes_actual,$dia_actual) = 
-                        explode('-',$fecha_actual);
-                    list($anno_nacimiento,$mes_nacimiento,$dia_nacimiento) = 
-                        explode('-',$tmp_fecha_nacimiento);
-                    
-                    if($anno_actual - $anno_nacimiento <= 120 
-                            and $anno_actual - $anno_nacimiento > 0) {
-                        //  la persona tiene menos de 120 años  VALIDA
-                        $fecha_nacimiento = $tmp_fecha_nacimiento;
-                    } elseif($anno_actual - $anno_nacimiento > 121) {
-                        //  la persona tiene mas de 120 años    NO VALIDA
+                    $fecha_actual = date("Y-m-d");
+                    list($anno_actual,$mes_actual,$dia_actual) = explode('-',$fecha_actual);
+                    list($anno,$mes,$dia) = explode('-',$tmp_fecha_nacimiento);
+
+                    //echo "<h2>Año: $anno, Año actual: $anno_actual</h2>";
+                    if($anno_actual - $anno < 18) {
+                        $err_fecha_nacimiento = "No puedes ser menor de edad";
+                    } elseif($anno_actual - $anno == 18) {
+                        if($mes_actual - $mes < 0) {
+                            $err_fecha_nacimiento = "No puedes ser menor de edad";
+                        } elseif($mes_actual - $mes == 0) {
+                            if($dia_actual - $dia < 0) {
+                                $err_fecha_nacimiento = "No puedes ser menor de edad";
+                            } else {
+                                $fecha_nacimiento = $tmp_fecha_nacimiento;
+                            }
+                        } elseif($mes_actual - $mes > 0) {
+                            $fecha_nacimiento = $tmp_fecha_nacimiento;
+                        } 
+                    } elseif($anno_actual - $anno > 121) {
                         $err_fecha_nacimiento = "No puedes tener más de 120 años";
-                        echo "<h1>AAAAA</h1>";
-                    } elseif($anno_actual - $anno_nacimiento < 0) {
-                        $err_fecha_nacimiento = "No puedes tener menos de 0 años";
-                        echo "<h1>DDDDD</h1>";
-                    } elseif($anno_actual - $anno_nacimiento == 121) {
-                        if($mes_actual - $mes_nacimiento < 0) {
-                            //  la persona aun no ha cumplido 121
-                            $fecha_nacimiento = $tmp_fecha_nacimiento;
-                        } elseif($mes_actual - $mes_nacimiento > 0) {
-                            //  la persona ya ha cumplido 121
+                    } elseif($anno_actual - $anno == 121) {
+                        if($mes_actual - $mes > 0) {
                             $err_fecha_nacimiento = "No puedes tener más de 120 años";
-                            echo "<h1>BBBBB</h1>";
-                        } elseif($mes_actual - $mes_nacimiento == 0) {
-                            if($dia_actual - $dia_nacimiento < 0) {
-                                //  la persona aun no ha cumplido 121
-                                $fecha_nacimiento = $tmp_fecha_nacimiento;
-                            } elseif($dia_actual - $dia_nacimiento >= 0) {
-                                //  la persona ya ha cumplido 121
+                        } elseif($mes_actual - $mes == 0) {
+                            if($dia_actual - $dia >= 0) {
                                 $err_fecha_nacimiento = "No puedes tener más de 120 años";
-                                echo "<h1>CCCCC</h1>";
-                            }
-                        }
-                    } elseif($anno_actual - $anno_nacimiento == 0) {
-                        if($mes_actual - $mes_nacimiento < 0) {
-                            //  la persona aun no nacido
-                            $err_fecha_nacimiento = "La persona aún no ha nacido";
-                            echo "<h1>AAAAA</h1>";
-                        } elseif($mes_actual - $mes_nacimiento < 0) {
-                            //  la persona ya ha nacido
-                            $fecha_nacimiento = $tmp_fecha_nacimiento;
-                        } elseif($mes_actual - $mes_nacimiento == 0) {
-                            if($dia_actual - $dia_nacimiento < 0) {
-                                //  la persona ya ha nacido
-                                $err_fecha_nacimiento = "La persona aún no ha nacido";
-                                echo "<h1>BBBBB</h1>";
-                            } elseif($dia_actual - $dia_nacimiento >= 0) {
-                                //  la persona ya ha cumplido 121
+                            } else {
                                 $fecha_nacimiento = $tmp_fecha_nacimiento;
                             }
-                        }
+                        } elseif($mes_actual - $mes < 0) {
+                            $fecha_nacimiento = $tmp_fecha_nacimiento;
+                        } 
+                    } else {
+                        $fecha_nacimiento = $tmp_fecha_nacimiento;
                     }
                 }
             }
@@ -245,7 +214,6 @@
             <div class="mb-3">
                 <label class="form-label">Apellidos</label>
                 <input class="form-control" type="text" name="apellidos">
-                <?php if(isset($err_apellidos)) echo "<span class='error'>$err_apellidos</span>" ?>
             </div>
             <div class="mb-3">
                 <label class="form-label">Fecha de nacimiento</label>
@@ -257,11 +225,13 @@
             </div>
         </form>
         <?php
-        if(isset($dni) && isset($correo) && isset($usuario) && isset($nombre)) { ?>
+        if(isset($dni) && isset($correo) && isset($usuario) && isset($nombre)
+                && isset($fecha_nacimiento)) { ?>
             <h1><?php echo $dni ?></h1>
             <h1><?php echo $correo ?></h1>
             <h1><?php echo $usuario ?></h1>
             <h1><?php echo $nombre ?></h1>
+            <h1><?php echo $fecha_nacimiento ?></h1>
         <?php } ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

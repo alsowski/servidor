@@ -76,9 +76,9 @@
                 /*<td><?php echo $titulo ?></td>*/
                 /*<td><?php echo $titulo ?></td>*/
                 /*<td><?php echo $genero ?></td>*/
-                 /*<td><?php echo $anio ?></td>*/
-                 /*<td><?php echo $duracion ?></td>*/
-                 /*</td> */
+                /*<td><?php echo $anio ?></td>*/
+                /*<td><?php echo $duracion ?></td>*/
+                /*</td> */
             }
             ?>
         </tbody>
