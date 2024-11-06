@@ -88,6 +88,14 @@
                     Ejemplo de ejercicio con videojuegos
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="futbol.php">futbol.php</a>
+                </td>
+                <td>
+                    Ejemplo de ejercicio con futbol
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>
