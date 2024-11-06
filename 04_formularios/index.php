@@ -80,6 +80,14 @@
                     Ejemplo de ejercicio con bootstrap
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="videojuegos.php">videojuegos.php</a>
+                </td>
+                <td>
+                    Ejemplo de ejercicio con videojuegos
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>
