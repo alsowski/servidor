@@ -34,6 +34,16 @@
             $tmp_correo = depurar($_POST["correo"]);
             $tmp_fecha_nacimiento = depurar($_POST["fecha_nacimiento"]);
 
+            //echo "<h1>" . strlen($tmp_nombre) . "</h1>";
+
+            if($tmp_fecha_nacimiento > $tmp_fecha_primer_dni) {
+                echo "<h1>La fecha de nacimiento no puede ser posterior a la del DNI</h1>";
+            } elseif($tmp_fecha_nacimiento == $tmp_fecha_primer_dni) {
+                echo "<h1>BUeno, al palo, cuela porque son iguales</h1>";
+            } else {
+                echo "<h1>Ok, la fecha está bien</h1>";
+            }
+
             if($tmp_dni == '') {
                 $err_dni = "El DNI es obligatorio";
             } else {

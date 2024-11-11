@@ -96,6 +96,14 @@
                     Ejemplo de ejercicio con futbol
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="media.php">media.php</a>
+                </td>
+                <td>
+                    Ejemplo de ejercicio con media
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>
