@@ -104,6 +104,22 @@
                     Ejemplo de ejercicio con media
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="nuevo_anime.php">nuevo_anime.php</a>
+                </td>
+                <td>
+                    Ejemplo de ejercicio con animes
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="nuevo_estudio.php">nuevo_estudio.php</a>
+                </td>
+                <td>
+                    Ejemplo de ejercicio con estudio
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>

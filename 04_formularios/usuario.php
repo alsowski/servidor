@@ -17,10 +17,11 @@
 </head>
 <body>
     <?php
-    function depurar($entrada) {
+    function depurar(string $entrada) : string {
         $salida = htmlspecialchars($entrada);
         $salida = trim($salida);
-        $salida = preg_replace('!\s+!',' ', $salida);
+        $salida = stripslashes($salida);
+        $salida = preg_replace('!\s+!', ' ', $salida);
         return $salida;
     }
     ?>
@@ -33,15 +34,17 @@
             $tmp_dni = depurar($_POST["dni"]);
             $tmp_correo = depurar($_POST["correo"]);
             $tmp_fecha_nacimiento = depurar($_POST["fecha_nacimiento"]);
+            $tmp_fecha_primer_dni = depurar($_POST["fecha_primer_dni"]);
 
             //echo "<h1>" . strlen($tmp_nombre) . "</h1>";
 
             if($tmp_fecha_nacimiento > $tmp_fecha_primer_dni) {
-                echo "<h1>La fecha de nacimiento no puede ser posterior a la del DNI</h1>";
+                $err_fecha_primer_dni = "La fecha de nacimiento no puede ser posterior a la del DNI";
             } elseif($tmp_fecha_nacimiento == $tmp_fecha_primer_dni) {
-                echo "<h1>BUeno, al palo, cuela porque son iguales</h1>";
+                echo "<h1>Bueno, al palo, cuela porque son iguales</h1>";
+                $fecha_primer_dni = $tmp_fecha_primer_dni;
             } else {
-                echo "<h1>Ok, la fecha está bien</h1>";
+                $fecha_primer_dni = $tmp_fecha_primer_dni;
             }
 
             if($tmp_dni == '') {
@@ -129,7 +132,7 @@
                     $err_usuario = "El usuario debe contener de 4 a 12 letras, 
                         números o barrabaja";
                 } else {
-                    $usuario = ucwords(strtolower($tmp_usuario));
+                    $usuario = $tmp_usuario;
                 }
             }
 
@@ -139,13 +142,26 @@
                 if(strlen($tmp_nombre) < 2 || strlen($tmp_nombre) > 40) {
                     $err_nombre = "El nombre debe tener entre 2 y 40 caracteres";
                 } else {
-                    //  letras, espacios en blanco y tildes
                     $patron = "/^[a-zA-Z áéióúÁÉÍÓÚñÑüÜ]+$/";
                     if(!preg_match($patron, $tmp_nombre)) {
-                        $err_nombre = "El nombre solo puede contener letras y espacios
-                            en blanco";
+                        $err_nombre = "El nombre solo puede contener letras y espacios en blanco";
                     } else {
                         $nombre = ucwords(strtolower($tmp_nombre));
+                    }
+                }
+            }
+
+            if($tmp_apellidos == '') {
+                $err_apellidos = "Los apellidos es obligatorio";
+            } else {
+                if(strlen($tmp_apellidos) < 2 || strlen($tmp_apellidos) > 30) {
+                    $err_apellidos = "Los apellidos tienen que tener entre 2 y 30 caracteres";
+                } else {
+                    $patron = "/^[a-zA-Z\ áéíóúÁÉÍÓÚ]+$/";
+                    if(!preg_match($patron, $tmp_apellidos)) {
+                        $err_apellidos = "Los apellidos solo pueden contener letras o espacios en blanco";
+                    } else {
+                        $apellidos = ucwords(strtolower($tmp_apellidos));
                     }
                 }
             }
@@ -224,6 +240,7 @@
             <div class="mb-3">
                 <label class="form-label">Apellidos</label>
                 <input class="form-control" type="text" name="apellidos">
+                <?php if(isset($err_apellidos)) echo "<span class='error'>$err_apellidos</span>" ?>
             </div>
             <div class="mb-3">
                 <label class="form-label">Fecha de nacimiento</label>
@@ -231,17 +248,23 @@
                 <?php if(isset($err_fecha_nacimiento)) echo "<span class='error'>$err_fecha_nacimiento</span>" ?>
             </div>
             <div class="mb-3">
+                <label class="form-label">Fecha de primer DNI</label>
+                <input class="form-control" type="date" name="fecha_primer_dni">
+                <?php if(isset($err_fecha_primer_dni)) echo "<span class='error'>$err_fecha_primer_dni</span>" ?>
+            </div>
+            <div class="mb-3">
                 <input class="btn btn-primary" type="submit" value="Enviar">
             </div>
         </form>
         <?php
-        if(isset($dni) && isset($correo) && isset($usuario) && isset($nombre)
-                && isset($fecha_nacimiento)) { ?>
-            <h1><?php echo $dni ?></h1>
-            <h1><?php echo $correo ?></h1>
-            <h1><?php echo $usuario ?></h1>
-            <h1><?php echo $nombre ?></h1>
-            <h1><?php echo $fecha_nacimiento ?></h1>
+        if(isset($dni) && isset($correo) && isset($usuario) && isset($nombre) && isset($apellidos) && isset($fecha_nacimiento) && isset($fecha_primer_dni)){ ?>
+            <p><?php echo $dni ?></p>
+            <p><?php echo $correo ?></p>
+            <p><?php echo $usuario ?></p>
+            <p><?php echo $nombre ?></p>
+            <p><?php echo $apellidos ?></p>
+            <p><?php echo $fecha_nacimiento ?></p>
+            <p><?php echo $fecha_primer_dni ?></p>
         <?php } ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
