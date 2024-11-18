@@ -8,6 +8,7 @@
     <?php
         error_reporting( E_ALL );
         ini_set("display_errors", 1 );  
+        require('conexion.php');
     ?>
     <style>
         .error {
@@ -40,7 +41,6 @@
             $tmp_nombre_estudio = depurar($_POST["nombre_estudio"]);
             $tmp_anno_estreno = depurar($_POST["anno_estreno"]);
             $tmp_num_temporadas = depurar($_POST["num_temporadas"]);
-        
 
             if($tmp_titulo == '') {
                 $err_titulo = "El titulo es obligatorio";
@@ -74,12 +74,16 @@
                 }
             }
 
+        $sql = "INSERT INTO animes (titulo, nombre_estudio, anno_estreno, num_temporadas)
+            VALUES ('$titulo', '$nombre_estudio', $anno_estreno, $num_temporadas)";
+
+        $_conexion -> query($sql);
         }
         ?>
 
     <h1>Formulario Anime</h1>
 
-        <form class="col-4" action="" method="post">
+        <form class="col-6" action="" method="post">
             <div class="mb-3">
                 <label class="form-label">Titulo</label>
                 <input class="form-control" type="text" name="titulo">
