@@ -120,6 +120,14 @@
                     Ejemplo de ejercicio con estudio
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="importante.php">importante.php</a>
+                </td>
+                <td>
+                    Ejemplo de ejercicio con cosas importantes
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>
