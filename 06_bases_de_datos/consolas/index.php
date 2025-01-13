@@ -16,8 +16,9 @@
     <div class="container">
     <h1>Tabla de Consolas</h1>
     <?php
-        $sql = "SELECT * FROM consolas";
-        $resultado = $_conexion -> query($sql);
+        /* $sql = "SELECT * FROM consolas";
+        $resultado = $_conexion -> query($sql); */
+
         /**
          * Aplicamos la función query a la conexión, donde se ejecuta la sentencia sql hecha
          * 
@@ -25,6 +26,15 @@
          * a los arrays
          */
     
+        # 1. Prepare
+        $sql = $_conexion -> prepare("SELECT * FROM consolas");
+        # 2. Execute
+        $sql -> execute();
+        # 3. Retrieve
+        $resultado = $sql -> get_result();
+
+        $_conexion -> close(); 
+
     ?>
     <table class="table table-striped table-success table-hover">
         <thead class="table-dark">
