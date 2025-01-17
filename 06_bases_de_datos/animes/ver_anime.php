@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+r<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuevo anime</title>
@@ -12,9 +12,9 @@
         require('conexion.php');
 
         session_start();
-        if(isset($_SESSION["usuario"])) {
-            echo "<h2>Bienvenid@ " . $_SESSION["usuario"] . "</h2>";
-        }else{
+        if(isset($_SESSION["usuario"])){
+            echo "<h2>Bienvenid@ ".$_SESSION["usuario"]." </h2>";
+        } else {
             header("location: usuario/iniciar_sesion.php");
             exit;
         }
@@ -25,20 +25,18 @@
         <h1>Editar anime</h1>
         <?php
         $id_anime = $_GET["id_anime"];
-        /*
-        $sql = "SELECT * FROM animes WHERE id_anime = $id_anime";
-        $resultado = $_conexion -> query($sql);
-        */
+        /* $sql = "SELECT * FROM animes WHERE id_anime = $id_anime";
+        $resultado = $_conexion -> query($sql); */
 
-        # 1. Prepare
+        // 1. Prepare
         $sql = $_conexion -> prepare("SELECT * FROM animes WHERE id_anime = ?");
-        # 2. Binding
-        $sql -> bind_param("i",$id_anime); # i,s,d
-        # 3. Execute
+        // 2. Binding
+        $sql -> bind_param("i",$id_anime);
+        // 3. Execute
         $sql -> execute();
-        # 4. Retrieve
+        // 4. Retrieve
         $resultado = $sql -> get_result();
-        
+
         while($fila = $resultado -> fetch_assoc()) {
             $titulo = $fila["titulo"];
             $nombre_estudio = $fila["nombre_estudio"];
@@ -47,18 +45,16 @@
             $imagen = $fila["imagen"];
         }
 
-        /*
-        $sql = "SELECT * FROM estudios ORDER BY nombre_estudio";
-        $resultado = $_conexion -> query($sql);
-        */
+        /* $sql = "SELECT * FROM estudios ORDER BY nombre_estudio";
+        $resultado = $_conexion -> query($sql); */
 
-        # 1. Prepare
+        // 1. Prepare
         $sql = $_conexion -> prepare("SELECT * FROM estudios ORDER BY ?");
-        # 2. Bind
+        // 2. Bind
         $sql -> bind_param("s",$nombre_estudio);
-        # 3. Execute
+        // 3. Execute
         $sql -> execute();
-        # 4. Retrieve
+        // 4. Retrieve
         $resultado = $sql -> get_result();
 
         $estudios = [];
@@ -67,25 +63,23 @@
             array_push($estudios, $fila["nombre_estudio"]);
         }
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
             $id_anime = $_POST["id_anime"];
             $titulo = $_POST["titulo"];
             $nombre_estudio = $_POST["nombre_estudio"];
             $anno_estreno = $_POST["anno_estreno"];
             $num_temporadas = $_POST["num_temporadas"];
 
-            /*
-            $sql = "UPDATE animes SET
-                titulo = '$titulo',
-                nombre_estudio = '$nombre_estudio',
-                anno_estreno = $anno_estreno,
-                num_temporadas = $num_temporadas
-                WHERE id_anime = $id_anime
-            ";
-            $_conexion -> query($sql);
-            */
+            /* $sql = "UPDATE animes SET
+                    titulo = '$titulo',
+                    nombre_estudio = '$nombre_estudio',
+                    anno_estreno = $anno_estreno,
+                    num_temporadas = $num_temporadas
+                    WHERE id_anime = $id_anime
+                    ";
+            $_conexion -> query($sql); */
 
-            # 1. Prepare
+            // 1. Prepare
             $sql = $_conexion -> prepare($sql = "UPDATE animes SET
                 titulo = ?,
                 nombre_estudio = ?,
@@ -94,7 +88,7 @@
                 WHERE id_anime = ?
             ");
 
-            # 2. Binding
+            // 2. Binding
             $sql -> bind_param("ssiii",
                 $titulo,
                 $nombre_estudio,
@@ -103,7 +97,7 @@
                 $id_anime
             );
 
-            # 3. Execute
+            // 3. Ejecucion
             $sql -> execute();
         }
         ?>
@@ -137,7 +131,7 @@
                 <input class="form-control" type="file" name="imagen">
             </div>
             <div class="mb-3">
-                <input type="hidden" name="id_anime" value="<?php echo $id_anime ?>">
+            <input type="hidden" name="id_anime" value="<?php echo $id_anime ?>">
                 <input class="btn btn-primary" type="submit" value="Confirmar">
                 <a class="btn btn-secondary" href="index.php">Volver</a>
             </div>
