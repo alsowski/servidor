@@ -14,6 +14,22 @@
     <?php
         $apiUrl = "https://api.jikan.moe/v4/top/anime";
 
+        if(isset($_GET["type"])) {
+            $type = $_GET["type"];
+        } else {
+            $type = "";
+        }
+
+        $apiUrl = "https://api.jikan.moe/v4/top/anime?type=" . $type;
+
+        if(isset($_GET["page"])) {
+            $page = $_GET["page"];
+        } else {
+            $page = 1;
+        }
+
+        $apiUrl = "https://api.jikan.moe/v4/top/anime?page=" . $page;
+
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $apiUrl);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -23,8 +39,22 @@
         $datos = json_decode($respuesta, true);
         $animes = $datos["data"];
     ?>
+
     <table class="table">
         <thead class="thead-dark">
+            <form action="" method="get">
+                <h3>Filtrar por Tipo</h3>
+                <label>
+                    <input type="radio" name="type" value="">Todos
+                </label>
+                <label>
+                    <input type="radio" name="type" value="tv"> Serie
+                </label>
+                <label>
+                    <input type="radio" name="type" value="movie"> Película
+                </label>
+                <button type="submit">Filtrar</button>
+            </form>
             <tr>
                 <th scope="col">Posición</th>
                 <th scope="col">Título</th>
@@ -48,6 +78,14 @@
                         </td>
                     </tr>
                 <?php } ?>
+                <tr>
+                    <td>
+                        <a href="top_animes.php?page=" class="btn btn-primary">Anterior</a>
+                    </td>
+                    <td>
+                        <a href="top_animes.php?page=" class="btn btn-primary">Siguiente</a>
+                    </td>
+                </tr>
         </tbody>
     </table>
 </body>
