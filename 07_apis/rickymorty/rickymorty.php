@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perrito Aleatorio</title>
+    <title>Ricky Martin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <?php
         error_reporting(E_ALL);
@@ -12,13 +12,13 @@
 </head>
 <body>
     <?php
+        $apiUrl = "https://rickandmortyapi.com/api/character";
+        $cant = isset($_GET["cant"]) && $_GET["cant"] !="" ? (int)$_GET["cant"]: 20;
+        $gen = isset($_GET["gen"]) ? $_GET["gen"] : "";
+        $esp = isset($_GET["esp"]) ? $_GET["esp"] : "";
+
         if(isset($_GET["cant"]) && isset($_GET["gen"]) && isset($_GET["esp"])) {
-            $cant = $_GET["cant"];
-            $gen = $_GET["gen"];
-            $esp = $_GET["esp"];
-            $apiUrl = "https://rickandmortyapi.com/api/character?count=$cant&gender=$gen&species=$esp";
-        } else {
-            $apiUrl = "https://rickandmortyapi.com/api/character";
+            $apiUrl = "https://rickandmortyapi.com/api/character?gender=$gen&species=$esp";
         }
 
         $curl = curl_init();
@@ -28,12 +28,12 @@
         curl_close($curl);
 
         $datos = json_decode($respuesta, true);
-        $personajes = $datos["results"];
+        $personajes = isset($datos["results"]) ? array_slice($datos["results"], 0, $cant) : [];
     ?>
     <h1>Filtros de Personajes</h1><br>
-    <form action="">
+    <form action="" method="get">
         <label for="cant">Cantidad de personajes</label>
-        <input type="text"><br><br>
+        <input type="text" name="cant"><br><br>
         <label for="gen">Género</label>
         <select name="gen">
             <option value="female">Mujer</option>
