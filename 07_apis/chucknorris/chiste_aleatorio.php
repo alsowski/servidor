@@ -37,7 +37,7 @@
     ?>
     <div class="container">
         <form method="get" class="col-4">
-            <label for="categories" class="form-label">Raza:</label>
+            <label for="categories" class="form-label">Categoria:</label>
             <select name="categories" id="categories" class="form-select">
                 <?php
                     foreach($categorias as $categoria) { ?>
