@@ -6,10 +6,15 @@ use Illuminate\Http\Request;
 
 class CocheController extends Controller
 {
-    public function index(){
+    public function index () {
         $coches = [
-            ["Mazda RX7", "Mercedes CLA", "Ford Mustang", "Peugeot 307 MS", 
-            "Fiat Multipla", "Citroën C15", "Mitsubichi Pajero"]
+            ["RX7","Mazda",20000],
+            ["CLA","Mercedes",35000],
+            ["Mustang","Ford",50000],
+            ["307 MS","Peugeot",17500],
+            ["Multipla","Fiat",12500],
+            ["C15","Citroën",10000],
+            ["Pajero","Mitsubichi",25000]
         ];
 
         return view('coches', ['coches' => $coches]);

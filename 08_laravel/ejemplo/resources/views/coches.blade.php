@@ -17,11 +17,11 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($marcas as $marca)
+        @foreach($coches as $coche)
             <tr>
-            <td>{{ $marca[0] }}</td>
-            <td>{{ $marca[1] }}</td>
-            <td>{{ $marca[2] }}</td>
+            <td>{{ $coche[0] }}</td>
+            <td>{{ $coche[1] }}</td>
+            <td>{{ $coche[2] }}</td>
             </tr>
         @endforeach
         </tbody>
